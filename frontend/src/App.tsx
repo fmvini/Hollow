@@ -3,10 +3,11 @@ import { useVoiceSocket } from './hooks/useVoiceSocket'
 
 function App() {
 
-    useVoiceSocket()
+  const {lastMessage, sendMessage} = useVoiceSocket()
   return (
     <>
-
+        <button onClick={() => sendMessage("Olá Hollow!")}>Testar Websocket</button>
+        <p>Ultima mensagem: {lastMessage ?? "Nenhuma mensagem recebida"}</p>
     </>
   )
 }
