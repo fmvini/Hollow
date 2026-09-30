@@ -1,0 +1,142 @@
+# =============================================================
+# Assistente de voz: .gitignore
+# =============================================================
+
+# -------------------------------------------------------------
+# Segredos e credenciais (NUNCA versionar)
+# -------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+client_secret*.json
+token.json
+token.pickle
+**/secrets/
+
+# -------------------------------------------------------------
+# Python
+# -------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+ENV/
+
+# Empacotamento e build
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
+
+# Testes e cobertura
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.hypothesis/
+
+# Linters e type checkers
+.ruff_cache/
+.mypy_cache/
+.pytype/
+
+# Jupyter (se usar para experimentos)
+.ipynb_checkpoints/
+
+# -------------------------------------------------------------
+# Node / Frontend (Vite + React)
+# -------------------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -------------------------------------------------------------
+# Modelos de IA e arquivos pesados
+# -------------------------------------------------------------
+# Vozes do Piper, pesos do Whisper, modelos do Ollama etc.
+backend/models/*
+!backend/models/.gitkeep
+*.onnx
+*.onnx.json
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.pth
+.cache/
+huggingface/
+
+# -------------------------------------------------------------
+# Dados locais e áudio (privacidade / LGPD)
+# -------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+data/
+
+# Áudios gravados durante testes (não versionar voz de ninguém)
+*.wav
+*.mp3
+*.webm
+*.ogg
+*.m4a
+!docs/**/*.wav
+!docs/**/*.mp3
+
+# -------------------------------------------------------------
+# Resultados gerados da avaliação
+# -------------------------------------------------------------
+# Mantém a pasta, ignora os relatórios. Se quiser exibir um
+# resultado no README, copie-o para docs/ e versione de lá.
+eval/results/*
+!eval/results/.gitkeep
+
+# -------------------------------------------------------------
+# Logs e temporários
+# -------------------------------------------------------------
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# -------------------------------------------------------------
+# Docker
+# -------------------------------------------------------------
+docker-compose.override.yml
+
+# -------------------------------------------------------------
+# Editores e sistema operacional
+# -------------------------------------------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
