@@ -4,10 +4,13 @@ import { useAudioRecorder } from './hooks/useAudioRecorder'
 
 function App() {
 
-  const {lastMessage, sendMessage} = useVoiceSocket()
+    //puxa as subfunções do hook useVoiceSocket e useAudioRecorder   
+  const {lastMessage, sendMessage, sendAudio} = useVoiceSocket()
   const {startRecording, stopRecording, isRecording, audioBlob} = useAudioRecorder()
   return (
+    //teste de websocket e gravação de áudio
     <>
+        
         <button onClick={() => sendMessage("Olá Hollow!")}>Testar Websocket</button>
         <p>Ultima mensagem: {lastMessage ?? "Nenhuma mensagem recebida"}</p>
 
@@ -20,6 +23,9 @@ function App() {
         <p>
         audioBlob.size: {audioBlob?.size ?? 0} bytes
         </p>
+        {audioBlob && (
+            <button onClick={() => sendAudio(audioBlob)}>Enviar Audio</button>
+        )}
     </>
   )
 }

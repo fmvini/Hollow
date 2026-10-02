@@ -38,8 +38,19 @@ export const useVoiceSocket = () => {
         }
     }
 
+    const sendAudio = (audio: Blob) => {
+        if (wsRef.current !== null){
+            if(wsRef.current.readyState === WebSocket.OPEN){
+                wsRef.current.send(audio)
+            } else{
+                return false
+            }
+        }
+    }
+
     return{
         lastMessage,
-        sendMessage
+        sendMessage,
+        sendAudio
     }
  }
