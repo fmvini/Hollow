@@ -1,5 +1,5 @@
 from fastapi import APIRouter, WebSocket
-from app.pipeline.orchestrator import process_audio
+from app.pipeline.orchestrator import process_audio, process_text
 
 router = APIRouter()
 
@@ -15,8 +15,10 @@ async def websocket_endpoint(websocket: WebSocket):
         audio_bytes = data.get('bytes')
 
         if text is not None:
-           await websocket.send_text(f'Recebi {text}!')
+           response = await process_text(text)
+           await websocket.send_text(response)
         elif audio_bytes is not None:
            transcription = await process_audio(audio_bytes)
-           await websocket.send_text(f'Recebi {len(audio_bytes)} bytes de audio!')
-           await websocket.send_text(f'{transcription}')
+           response = await process_text(transcription)
+           await websocket.send_text(f'Recebi "{transcription}"!')
+           await websocket.send_text(response)
