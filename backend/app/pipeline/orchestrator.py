@@ -8,6 +8,6 @@ async def process_audio(audio_bytes: bytes) -> str:
         audio_bytes
     )
     return transcription
-async def process_text(text: str) -> str:
-    result = await generate_response(text)
+async def process_text(chat, text: str) -> str:
+    result = await generate_response(chat, text)
     return result
