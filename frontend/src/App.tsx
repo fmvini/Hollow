@@ -1,10 +1,12 @@
 import './styles/App.css'
 import { useVoiceSocket } from './hooks/useVoiceSocket'
 import { useAudioRecorder } from './hooks/useAudioRecorder'
+import { useAudioPlayer } from './hooks/useAudioPlayer'
 
 function App() {
 
-    //puxa as subfunções do hook useVoiceSocket e useAudioRecorder   
+    //puxa as subfunções do hook useVoiceSocket, useAudioRecorder e o useAudioPlayer  
+    const { speak } = useAudioPlayer()   
   const {lastMessage, sendMessage, sendAudio} = useVoiceSocket()
   const {startRecording, stopRecording, isRecording, audioBlob} = useAudioRecorder()
   return (
