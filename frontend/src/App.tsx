@@ -2,6 +2,7 @@ import './styles/App.css'
 import { useVoiceSocket } from './hooks/useVoiceSocket'
 import { useAudioRecorder } from './hooks/useAudioRecorder'
 import { useAudioPlayer } from './hooks/useAudioPlayer'
+import { useEffect } from 'react'
 
 function App() {
 
@@ -9,6 +10,13 @@ function App() {
     const { speak } = useAudioPlayer()   
   const {lastMessage, sendMessage, sendAudio} = useVoiceSocket()
   const {startRecording, stopRecording, isRecording, audioBlob} = useAudioRecorder()
+
+    useEffect(() => {
+        if (lastMessage !== null ){
+            speak(lastMessage)
+        }
+    }, [lastMessage, speak])
+
   return (
     //teste de websocket e gravação de áudio
     <>

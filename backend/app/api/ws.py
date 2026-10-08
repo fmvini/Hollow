@@ -22,5 +22,4 @@ async def websocket_endpoint(websocket: WebSocket):
         elif audio_bytes is not None:
            transcription = await process_audio(audio_bytes)
            response = await process_text(chat, transcription)
-           await websocket.send_text(f'Recebi "{transcription}"!')
            await websocket.send_text(response)
