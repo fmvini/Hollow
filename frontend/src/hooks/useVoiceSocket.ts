@@ -7,26 +7,26 @@ export const useVoiceSocket = () => {
 
     
     useEffect(() => {
-        //Cria a conexão com o websocket
-        wsRef.current = new WebSocket('ws://localhost:8001/ws/')
+        const socket = new WebSocket('ws://127.0.0.1:8001/ws/')
 
-        wsRef.current.onopen = () => {
-            console.log('Conexão estabelecida com o WebSocket');
+        wsRef.current = socket
+
+        socket.onopen = () => {
+            console.log('Conexão estabelecida com o WebSocket')
         }
 
-        wsRef.current.onclose = () => {
-            console.log('Conexão fechada com o WebSocket');
+        socket.onclose = () => {
+            console.log('Conexão fechada com o WebSocket')
         }
 
-        wsRef.current.onmessage = (event) => {
+        socket.onmessage = (event) => {
             setLastMessage(event.data)
         }
-        return () => {
-             if (wsRef.current) wsRef.current.close();
-            }
-    }
 
-, [])
+        return () => {
+            socket.close()
+        }
+    }, [])
 
     const sendMessage = (message: string) => {
         if (wsRef.current !== null){
