@@ -25,3 +25,23 @@ def create_task(title: str) -> Task:
         )
     finally: 
         connection.close()
+
+def list_tasks() -> list[Task]:
+    connection = get_connection()
+
+    try:
+        rows = connection.execute(
+            "SELECT id, title, completed, created_at FROM tasks"
+        ).fetchall()
+
+        return [
+            Task(
+                id=row["id"],
+                title=row["title"],
+                completed=bool(row["completed"]),
+                created_at=row["created_at"]
+            )
+            for row in rows
+        ]
+    finally:
+        connection.close()
