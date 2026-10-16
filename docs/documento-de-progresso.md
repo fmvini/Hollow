@@ -1576,3 +1576,13 @@ tendo em base os documentos de arquitetura de arquivos e escopo do projeto, o in
 142 | - [ ] Provider alternativo (Claude) selecionável por configuração.
 143 | - [ ] Busca na web como nova tool.
 144 | 
+
+
+
+# Ultimas 5 modificações do projeto:
+
+- Adicionada a função list_tasks em repository.py
+- progresso no repository.py
+- base do repository.py feito
+- base do repository.py feito
+- implementação do models.py
